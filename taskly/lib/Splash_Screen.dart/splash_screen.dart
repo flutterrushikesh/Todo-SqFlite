@@ -9,10 +9,13 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(
-        const Duration(seconds: 5),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const OnboardingScreen(),
-            )));
+      const Duration(seconds: 5),
+      () => Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const OnboardingScreen(),
+        ),
+      ),
+    );
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Center(
