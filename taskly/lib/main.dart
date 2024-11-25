@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+
 import 'package:taskly/Controller/onboarding_controller.dart';
-import 'package:taskly/Screen_Resolution/screen_width.dart';
-import 'package:taskly/Splash_Screen.dart/splash_screen.dart';
+import 'package:taskly/Controller/task_controller.dart';
+import 'package:taskly/View/Screen_Resolution/screen_width.dart';
+import 'package:taskly/View/Splash_Screen.dart/splash_screen.dart';
 
-import 'Screen_Resolution/screen_height.dart';
+import 'View/Screen_Resolution/screen_height.dart';
 
-dynamic database;
+// dynamic database;
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // WidgetsFlutterBinding.ensureInitialized();
 
-  ///DATABASE OPEN + CREATE REQUIRED TABLES.
-  database = await openDatabase(
-    join(
-      await getDatabasesPath(),
-      'TODO.db',
-    ),
-    version: 1,
-    onCreate: (db, version) async {
-      await db.execute(
-        '''CREATE TABLE TASK (
-          id INTEGER PRIMARY KEY AUTO INCREMENT,
-          title TEXT,
-          description TEXT,
-          date TEXT
-        )''',
-      );
-    },
-  );
+  // ///DATABASE OPEN + CREATE REQUIRED TABLES.
+  // database = await openDatabase(
+  //   join(
+  //     await getDatabasesPath(),
+  //     'TODO.db',
+  //   ),
+  //   version: 1,
+  //   onCreate: (db, version) async {
+  //     await db.execute(
+  //       '''CREATE TABLE TASK (
+  //         id INTEGER PRIMARY KEY AUTO INCREMENT,
+  //         title TEXT,
+  //         description TEXT,
+  //         date TEXT
+  //       )''',
+  //     );
+  //   },
+  // );
   runApp(
     const MyApp(),
   );
@@ -42,8 +42,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (context) => OnboardingController(),
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => OnboardingController()),
+          ChangeNotifierProvider(create: (context) => TaskController()),
+        ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
@@ -58,6 +61,10 @@ class MyApp extends StatelessWidget {
               bodyMedium: GoogleFonts.lato(
                 color: Colors.white,
               ),
+              titleLarge: GoogleFonts.k2d(),
+              titleMedium: GoogleFonts.lato(),
+              labelLarge: GoogleFonts.lato(),
+              headlineMedium: GoogleFonts.lato(),
             ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
