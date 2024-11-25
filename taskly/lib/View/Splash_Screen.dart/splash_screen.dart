@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:taskly/Onboarding_Screen/onboarding_screen.dart';
-import 'package:taskly/Screen_Resolution/screen_height.dart';
+import 'package:taskly/View/Onboarding_Screen/onboarding_screen.dart';
+import 'package:taskly/View/Screen_Resolution/screen_height.dart';
 
-import 'package:taskly/Splash_Screen.dart/Widgets/app_logo.dart';
+import 'package:taskly/View/Splash_Screen.dart/Widgets/app_logo.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

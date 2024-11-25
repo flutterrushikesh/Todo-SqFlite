@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:taskly/Screen_Resolution/screen_height.dart';
-import 'package:taskly/Screen_Resolution/screen_width.dart';
+import 'package:taskly/View/Screen_Resolution/screen_height.dart';
+import 'package:taskly/View/Screen_Resolution/screen_width.dart';
 
 class AppLogo extends StatelessWidget {
   const AppLogo({super.key});
